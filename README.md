@@ -1,4 +1,4 @@
-# spring-boot-testing-v2
+# TMS // JOS / KATAS / Spring Boot Testing / Session 3
 
 ```gherkin
 Feature: EUR-USD Conversor using the best Rate 
@@ -12,6 +12,58 @@ Scenario: Consume the APIs in a Happy path scenario
     And  use the best rate for USD  
     Then return {amount}*rate
 ```
+
+### Requirements
+
+For building and running the application you need:
+
+- [Java 11.07](https://www.oracle.com/technetwork/java/javase/downloads/).
+
+### How to run
+If you use Maven, run the following command in a terminal window (in the complete directory):
+
+```bash
+./mvnw spring-boot:run
+```
+
+### How To launch Tests
+If you use Maven, run the following command in a terminal window (in the complete directory):
+
+```bash
+./mvnw clean test
+```
+
+### How To launch Checkstyle
+If you use Maven, run the following command in a terminal window (in the complete directory):
+
+```bash
+./mvnw checkstyle:checkstyle
+```
+
+### How To launch PMD
+If you use Maven, run the following command in a terminal window (in the complete directory):
+
+```bash
+./mvnw pmd:check
+
+./mvnw mvn pmd:pmd
+```
+
+### How To launch Spotbugs
+If you use Maven, run the following command in a terminal window (in the complete directory):
+
+```bash
+./mvnw spotbugs:check
+
+./mvnw spotbugs:spotbugs
+
+./mvnw spotbugs:gui
+```
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Please make sure to update tests as appropriate :).
+
 
 ## References:
 
