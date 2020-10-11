@@ -23,41 +23,41 @@ For building and running the application you need:
 If you use Maven, run the following command in a terminal window (in the complete directory):
 
 ```bash
-./mvnw spring-boot:run
+mvn spring-boot:run
 ```
 
 ### How To launch Tests
 If you use Maven, run the following command in a terminal window (in the complete directory):
 
 ```bash
-./mvnw clean test
+mvn clean test
 ```
 
 ### How To launch Checkstyle
 If you use Maven, run the following command in a terminal window (in the complete directory):
 
 ```bash
-./mvnw checkstyle:checkstyle
+mvn checkstyle:checkstyle
 ```
 
 ### How To launch PMD
 If you use Maven, run the following command in a terminal window (in the complete directory):
 
 ```bash
-./mvnw pmd:check
+mvn pmd:check
 
-./mvnw mvn pmd:pmd
+mvn mvn pmd:pmd
 ```
 
 ### How To launch Spotbugs
 If you use Maven, run the following command in a terminal window (in the complete directory):
 
 ```bash
-./mvnw spotbugs:check
+mvn spotbugs:check
 
-./mvnw spotbugs:spotbugs
+mvn spotbugs:spotbugs
 
-./mvnw spotbugs:gui
+mvn spotbugs:gui
 ```
 
 ## Contributing
