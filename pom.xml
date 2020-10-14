@@ -24,7 +24,7 @@
 
 		<java.version>11</java.version>
 
-		<maven.asserj.version>3.17.2</maven.asserj.version>
+		<maven.wiremock.version>2.27.2</maven.wiremock.version>
 		<maven.jacoco.plugin.version>0.8.6</maven.jacoco.plugin.version>
 		<maven.site.plugin.version>3.9.1</maven.site.plugin.version>
 		<maven.spotbugs.plugin.version>4.1.3</maven.spotbugs.plugin.version>
@@ -50,10 +50,15 @@
 		<dependency>
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
-			<version>${maven.asserj.version}</version>
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+		    <groupId>com.github.tomakehurst</groupId>
+		    <artifactId>wiremock-jre8</artifactId>
+		    <version>${maven.wiremock.version}</version>
+		    <scope>test</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

@@ -39,6 +39,7 @@ public class MoneyConvertService {
     public CompletableFuture<String> findRate(final String url) {
         log.info("Looking up " + url);
         String results = restTemplate.getForObject(url, String.class);
+        log.info("Data {}:",results);
         return CompletableFuture.completedFuture(results);
     }
 
