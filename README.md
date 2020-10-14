@@ -1,5 +1,7 @@
 # TMS // JOS / KATAS / Spring Boot Testing / Session 3
 
+![Java CI with Maven](https://github.com/tblasCode/spring-boot-testing-v2/workflows/Java%20CI%20with%20Maven/badge.svg)
+
 ```gherkin
 Feature: EUR-USD Conversor using the best Rate 
 Background: The provider has an agreement with few REST API
