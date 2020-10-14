@@ -1,28 +1,43 @@
 package com.jos.sbt.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.concurrent.CompletableFuture;
+
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.concurrent.CompletableFuture;
+import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Service.
+ *
+ */
 @Service
+@Slf4j
 public class MoneyConvertService {
 
-    private static final Logger logger = LoggerFactory.getLogger(MoneyConvertService.class);
-
+    /**
+     * RestTemplate.
+     */
     private final RestTemplate restTemplate;
 
-    public MoneyConvertService(RestTemplateBuilder restTemplateBuilder) {
+    /**
+     * MoneyConvertService.
+     * @param restTemplateBuilder - restTemplateBuilder
+     */
+    public MoneyConvertService(final RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder.build();
     }
 
+    /**
+     * findRate.
+     * @param url - url
+     * @return CompletableFuture<String>
+     */
     @Async
-    public CompletableFuture<String> findRate(String url){
-        logger.info("Looking up " + url);
+    public CompletableFuture<String> findRate(final String url) {
+        log.info("Looking up " + url);
         String results = restTemplate.getForObject(url, String.class);
         return CompletableFuture.completedFuture(results);
     }
