@@ -19,7 +19,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<project.reporting.outputEncoding>UTF-8
+		</project.reporting.outputEncoding>
 		<projectVersion>${project.version}</projectVersion>
 
 		<java.version>11</java.version>
@@ -31,7 +32,8 @@
 		<maven.pmd.plugin.version>3.13.0</maven.pmd.plugin.version>
 		<maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
 		<pmd.version>6.26.0</pmd.version>
-		<maven.checkstyle.plugin.version>3.1.1</maven.checkstyle.plugin.version>
+		<maven.checkstyle.plugin.version>3.1.1
+		</maven.checkstyle.plugin.version>
 	</properties>
 
 	<dependencies>
@@ -54,10 +56,10 @@
 		</dependency>
 
 		<dependency>
-		    <groupId>com.github.tomakehurst</groupId>
-		    <artifactId>wiremock-jre8</artifactId>
-		    <version>${maven.wiremock.version}</version>
-		    <scope>test</scope>
+			<groupId>com.github.tomakehurst</groupId>
+			<artifactId>wiremock-jre8</artifactId>
+			<version>${maven.wiremock.version}</version>
+			<scope>test</scope>
 		</dependency>
 
 		<dependency>
@@ -83,6 +85,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		
 	</dependencies>
 
 	<build>
@@ -90,7 +93,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven.compiler.plugin.version}</version>
 				<configuration>
 					<source>11</source>
 					<target>11</target>
@@ -134,7 +136,8 @@
 				<version>${maven.spotbugs.plugin.version}</version>
 				<configuration>
 					<threshold>Low</threshold>
-					<includeFilterFile>${project.basedir}/spotbugs-security-include.xml</includeFilterFile>
+					<includeFilterFile>${project.basedir}/spotbugs-security-include.xml
+					</includeFilterFile>
 					<plugins>
 						<plugin>
 							<groupId>com.h3xstream.findsecbugs</groupId>

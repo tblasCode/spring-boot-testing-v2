@@ -11,11 +11,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.math.BigDecimal;
+import java.util.concurrent.ExecutionException;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
+import com.jos.sbt.model.RateResponse;
 
 @SpringBootTest
-public class MoneyConvertServiceTest {
+public class RestClientServiceTest {
 
     WireMockServer wireMockServer;
 
@@ -46,10 +51,17 @@ public class MoneyConvertServiceTest {
         wireMockServer.stop();
     }
     @Autowired
-    private MoneyConvertService service;
+    private FrankfurterConvertService frankfurterConvertService;
 
     @Test
-    public void get_frankdurt_data_when_call_frankfurt_rate_should_return_data() {
-        service.findRate("http://localhost:8989/api.frankfurter.app/latest");
+    void given_frankfurter_when_call_convert_then_ok() throws InterruptedException, ExecutionException {
+        //Given -> Setup
+        
+        //When
+        BigDecimal result = frankfurterConvertService.findRate("USD").get();
+        
+        //Then
+        assertThat(result).isEqualTo("1.1882");
     }
+    
 }

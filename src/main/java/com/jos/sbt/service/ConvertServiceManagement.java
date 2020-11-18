@@ -33,7 +33,8 @@ public class ConvertServiceManagement {
         return convertServices.stream()
                 .map(service -> service.findRate(target))
                 .map(CompletableFuture::join)
-                .max(BigDecimal::compareTo).orElseThrow(Exception::new);
+                .max(BigDecimal::compareTo)
+                .orElseThrow(Exception::new);
     }
 
 }

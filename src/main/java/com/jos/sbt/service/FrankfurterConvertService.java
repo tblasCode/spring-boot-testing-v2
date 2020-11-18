@@ -3,10 +3,7 @@ package com.jos.sbt.service;
 import java.math.BigDecimal;
 import java.util.concurrent.CompletableFuture;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import com.jos.sbt.model.RateResponse;
 
@@ -24,22 +21,17 @@ public class FrankfurterConvertService implements ConvertService {
      */
     private final String url;
     /**
-     * RestTemplate.
+     * RestClientService.
      */
-    private final RestTemplate restTemplate;
+    private final RestClientService restClientService;
     /**
      * MoneyConvertService.
-     * @param restTemplateBuilder - restTemplateBuilder
-     * @param urlService - url
+     * @param aRestClientService - restClientService
      */
     public FrankfurterConvertService(
-            final RestTemplateBuilder restTemplateBuilder,
-            @Value(
-                    "${api.rate.frankfurter:"
-                    + "http://api.frankfurter.app/latest}"
-                            ) final String urlService) {
-        this.restTemplate = restTemplateBuilder.build();
-        this.url = urlService;
+            final RestClientService aRestClientService) {
+        this.restClientService = aRestClientService;
+        this.url = "https://api.frankfurter.app/latest";
     }
 
     /**
@@ -50,7 +42,7 @@ public class FrankfurterConvertService implements ConvertService {
     public CompletableFuture<BigDecimal> findRate(final String target) {
         log.info("find rate FrankfurterConvertService.");
         return CompletableFuture.completedFuture(
-                restTemplate.getForObject(url, RateResponse.class)
+                restClientService.execute(url, RateResponse.class)
                 .getRates().get(target));
     }
 
