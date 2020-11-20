@@ -70,4 +70,14 @@ Please make sure to update tests as appropriate :).
 ## References:
 
 https://cucumber.io/docs/gherkin/reference/
-
+https://spring.io/guides/gs/async-method/
+https://www.baeldung.com/spring-async
+https://dzone.com/articles/spring-boot-async-methods
+https://www.baeldung.com/java-completablefuture
+https://www.baeldung.com/java-9-completablefuture
+https://grokonez.com/java/java-8/java-8-multiple-completablefutures
+https://dzone.com/articles/20-examples-of-using-javas-completablefuture
+https://stackoverflow.com/questions/47025206/java-collecting-results-of-completablefuture-from-multiple-calls
+https://levelup.gitconnected.com/completablefuture-a-new-era-of-asynchronous-programming-86c2fe23e246
+https://dzone.com/articles/using-optional-correctly-is-not-optional
+https://www.baeldung.com/java-9-optional
