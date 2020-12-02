@@ -1,7 +1,9 @@
 package com.jos.sbt.service;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,10 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class RatesapiConvertService implements ConvertService {
+    /**
+     * Timeout.
+     */
+    private static final int TIMEOUT = 60;
     /**
      * Url endpoint.
      */
@@ -41,9 +47,19 @@ public class RatesapiConvertService implements ConvertService {
      */
     public CompletableFuture<BigDecimal> findRate(final String target) {
         log.info("find rate RatesapiConvertService.");
-        return CompletableFuture.completedFuture(
-                restClientService.execute(url, RateResponse.class)
-                .getRates().get(target));
+        return CompletableFuture
+                .supplyAsync(()
+                        -> restClientService.execute(url, RateResponse.class)
+                        .getRates().get(target))
+                .orTimeout(TIMEOUT,
+                        TimeUnit.SECONDS)
+                .handle((response, ex) -> {
+                    if (!Objects.isNull(ex)) {
+                        log.error(ex.getLocalizedMessage(), ex);
+                    }
+                    log.info("response RatesapiConvertService");
+                    return response;
+                });
     }
 
 }

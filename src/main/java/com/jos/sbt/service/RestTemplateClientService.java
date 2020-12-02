@@ -54,7 +54,6 @@ public class RestTemplateClientService implements RestClientService {
      */
     public <T> T execute(final String url,
             final Class<T> responseType) {
-        log.info("Looking up " + url);
         return restTemplate.getForObject(url, responseType);
     }
 

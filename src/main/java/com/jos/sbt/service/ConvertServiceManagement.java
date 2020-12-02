@@ -6,6 +6,8 @@ import java.util.concurrent.CompletableFuture;
 
 import org.springframework.stereotype.Service;
 
+import static java.util.stream.Collectors.toUnmodifiableList;
+
 /**
  * Service.
  *
@@ -30,8 +32,11 @@ public class ConvertServiceManagement {
      * @return best rate
      */
     public BigDecimal convert(final String target) throws Exception {
-        return convertServices.stream()
+        List<CompletableFuture<BigDecimal>> futureRequests =
+                convertServices.stream()
                 .map(service -> service.findRate(target))
+                .collect(toUnmodifiableList());
+        return futureRequests.stream()
                 .map(CompletableFuture::join)
                 .max(BigDecimal::compareTo)
                 .orElseThrow(Exception::new);
